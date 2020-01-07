@@ -15,10 +15,26 @@ export class ApiRequestsService {
 
   constructor(private http: HttpClient) { }
 
+
+  extractData(res: Response) {
+    let body = res.json();
+    return body || {};
+  }
   //links for members entity 
   getAllDatas(apiName): Observable<any> {
-    return this.http.get(baseUrl + '/' + apiName + '/all');
+    const httpOptions = {
+      headers: new HttpHeaders().set("Access-Control-Allow-Origin", "*")
+    };
+    return this.http.get(baseUrl + '/' + apiName + '/all', httpOptions);
   }
+
+  getAllLocations(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders().set("Access-Control-Allow-Origin", "*")
+    };
+    return this.http.get(baseUrl + '/locations', httpOptions);
+  }
+
   getOne(apiName, id): Observable<any> {
     return this.http.get(baseUrl + '/' + apiName + '/' + id)
   }
@@ -38,10 +54,7 @@ export class ApiRequestsService {
   }
 
   login(apiName, body): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders().set("Access-Control-Allow-Origin", "*")
-    };
-    return this.http.put(baseUrl + "/" + apiName + "/login" + body, httpOptions);
+    return this.http.post(baseUrl + "/" + apiName + "/login", body, { headers: new HttpHeaders().set("Access-Control-Allow-Origin", "*"), responseType: 'text' });
   }
 
 }

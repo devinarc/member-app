@@ -1,0 +1,22 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  
+  .example-card {
+    width: 65%;
+    margin: 0 auto;
+  }
+  
+  .btn {
+    width: 45%;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  

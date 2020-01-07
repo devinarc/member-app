@@ -1,0 +1,11 @@
+<form>
+  <input type="text" placeholder="username" #username>
+  <br />
+  <input type="password" placeholder="password" #password>
+  <br />
+  <button mat-button (click)="login(username.value, password.value)" color="primary">Login
+  </button>
+
+</form>
+
+{{result}}

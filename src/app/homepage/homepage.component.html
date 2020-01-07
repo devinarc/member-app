@@ -1,1 +1,11 @@
-<p>Hi</p>
+<h2>
+    Weather in location
+</h2>
+
+<div class="example-container">
+
+    <mat-form-field *ngIf="!isEmpty">
+        <mat-select placeholder="Select Locations ">
+            <mat-option *ngFor="let location of locations">{{location}}</mat-option>
+        </mat-select>
+    </mat-form-field>

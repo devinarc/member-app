@@ -1,5 +1,10 @@
+import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiRequestsService } from './service/api-requests.service.';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-root',
@@ -9,36 +14,21 @@ import { ApiRequestsService } from './service/api-requests.service.';
 export class AppComponent implements OnInit {
   hide = true;
   loading = false;
+  result = '';
 
-  constructor(private apiRequests: ApiRequestsService) {
+  constructor(private apiRequests: ApiRequestsService, private router: Router) {
 
   }
 
   ngOnInit() {
-    this.apiRequests.getAllDatas("members").toPromise().then(data => {
-      console.log(data);
-    });
+
+    // this.apiRequests.getAllDatas("members").toPromise().then(data => {
+    //   console.log(data);
+    // });
 
   }
 
-  async login(username, password) {
-    this.loading = true;
 
-    // console.log(`fields - ${username}, ${password}`);
-
-    let body = {
-      username: username,
-      password: password
-    };
-    await this.apiRequests
-      .login('members', body)
-      .toPromise()
-      .then(data => {
-        console.log(`data - ${data}`);
-
-
-      });
-  }
 
 
 }
